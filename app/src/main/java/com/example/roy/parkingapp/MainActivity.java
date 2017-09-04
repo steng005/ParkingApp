@@ -25,8 +25,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+/**
+ * An activity that displays a map showing the place at the device's current location.
+ */
 public class MainActivity extends AppCompatActivity
         implements OnMapReadyCallback {
+
     private static final String TAG = MainActivity.class.getSimpleName();
     private GoogleMap mMap;
     private CameraPosition mCameraPosition;
@@ -40,7 +44,7 @@ public class MainActivity extends AppCompatActivity
 
     // A default location (Singapore) and default zoom to use when location permission is
     // not granted.
-    private final LatLng mDefaultLocation = new LatLng(-33.8523341, 151.2106085);
+    private final LatLng mDefaultLocation = new LatLng(1.3521, 103.8198);
     private static final int DEFAULT_ZOOM = 15;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private boolean mLocationPermissionGranted;
@@ -120,6 +124,8 @@ public class MainActivity extends AppCompatActivity
      */
     @Override
     public void onMapReady(GoogleMap map) {
+
+        mMap = map;
 
         // Prompt the user for permission.
         getLocationPermission();
@@ -206,6 +212,7 @@ public class MainActivity extends AppCompatActivity
         }
         updateLocationUI();
     }
+
     /**
      * Updates the map's UI settings based on whether the user has granted location permission.
      */
